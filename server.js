@@ -7,7 +7,13 @@ const server = app.set('port', process.env.PORT || 3001);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.locals.title = 'Grudge List';
 app.locals.grudges = [];
+
+app.listen(app.get('port'), () => {
+  console.log(`${app.locals.title} is running on ${app.get('port')}.`);
+});
 
 app.get('/', (request, response) => {
   response.send('Welcome to Grudge List!');
