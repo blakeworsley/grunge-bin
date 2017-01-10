@@ -33,4 +33,12 @@ app.post('/grudge', (request, response) => {
   response.status(201).send({ data });
 });
 
+app.get('/urls/:shortenedUrl', (request, response) => {
+  let targetUrl = app.locals.urls.filter((url) =>
+    url.shortenedUrl===request.params.shortenedUrl)[0];
+  if (!targetUrl) { response.send(`It's Broken.`);}
+  ++targetUrl.clicks;
+  response.redirect( targetUrl.url );
+});
+
 module.exports = server;

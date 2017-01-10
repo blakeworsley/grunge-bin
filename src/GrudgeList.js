@@ -20,7 +20,10 @@ class GrudgeList extends Component {
 
   getGrudgeList(){
     axios.get('/api/grudge-list')
-      .then(result => this.setState({ grudgeList: result.data }))
+      .then(result => {
+        this.countForgiven(result.data);
+        this.setState({ grudgeList: result.data });
+      })
       .catch(error => console.log(error));
   }
 
@@ -34,7 +37,6 @@ class GrudgeList extends Component {
         forgiven: forgiven,
         id: id
       })
-      .then(response => console.log(response))
       .catch(error => console.log(error));
     this.getGrudgeList();
   }
@@ -43,13 +45,26 @@ class GrudgeList extends Component {
     const { grudgeList } = this.state;
     return grudgeList.map((person, i) => {
       return (
-        <section key={i}>
+        <li key={i}>
           <Grudge name={person.name} grudge={person.grudge} forgiven={person.forgiven}
             id={person.id} />
-        </section>
+        </li>
       )
     })
   }
+
+  countForgiven(result){
+    let unforgivenCount = 0;
+    let forgivenCount = 0;
+    for (var i = 0; i < result.length; i++) {
+      if(!result[i].forgiven){ unforgivenCount++; }
+      if(result[i].forgiven){ forgivenCount++; }
+      if(i === (result.length - 1)){
+        return this.setState({unforgivenCount: unforgivenCount, forgivenCount: forgivenCount});
+      }
+    }
+  }
+
 
   render() {
     const { name, grudge, grudgeList, unforgivenCount, forgivenCount } = this.state;
@@ -76,24 +91,10 @@ class GrudgeList extends Component {
         <section>Total People on my List: {grudgeList.length}</section>
         <section>Unforgivables: {unforgivenCount}</section>
         <section>Forgiven: {forgivenCount}</section>
-        { this.addGrudgesToPage() }
+        <ul>{this.addGrudgesToPage()}</ul>
       </section>
     );
   }
 }
 
 export default GrudgeList;
-
-
-// countForgiven() {
-//   const { grudgeList } = this.state;
-//   let unforgivenCount = 0;
-//   let forgivenCount = 0;
-//   for (var i = 0; i < grudgeList.length; i++) {
-//     if(!grudgeList[i].forgiven){ unforgivenCount++; }
-//     if(grudgeList[i].forgiven){ forgivenCount++; }
-//     if(i === grudgeList.length - 1){
-//       return this.setState({unforgivenCount: unforgivenCount, forgivenCount: forgivenCount});
-//     }
-//   }
-// }
