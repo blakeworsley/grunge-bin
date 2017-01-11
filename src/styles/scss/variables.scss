@@ -3,3 +3,109 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+// COLOR
+
+$color-main: #707070;
+$color-main-light: lighten($color-main, 20);
+$color-main-dark: darken($color-main, 20);
+$color-light: #D8D8D8;
+
+// FONT
+
+$font-main: 'Roboto', sans-serif;
+
+// FLEX
+
+@mixin center-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// HEADINGS
+
+ul {
+  @include center-items;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
+li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  width: 400px;
+  background: $color-light;
+  border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-main;
+  color: $color-main;
+  padding: 5px 0px;
+}
+
+h1 {
+  font-family: $font-main;
+  font-size: 24px;
+  color: $color-main;
+}
+
+h2 {
+  font-family: $font-main;
+  font-size: 20px;
+  color: $color-main;
+}
+
+h3 {
+  font-family: $font-main;
+  font-size: 18px;
+  color: $color-main;
+}
+
+h4 {
+  font-family: $font-main;
+  font-size: 14px;
+  color: $color-main;
+}
+
+input, button {
+  background: $color-light;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+}
+
+button {
+  background-color: #5C5C5C;
+  border: 3px solid #777;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1em;
+  width: 100px;
+  text-align: center;
+  color: #EEE
+}
+button:disabled {
+  color: #777
+}
+button:focus, button:hover {
+  border: 3px solid #FFF;
+  border-radius: 10px;
+  outline: none;
+  background-color: #555;
+  box-shadow: 0px 0px 5px 1px #666;
+}
+button:focus {
+  background-color: #EEE;
+  border: 3px solid #555;
+  color: #555;
+  box-shadow: inset 0px 0px 5px 1px #666;
+}
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,51 @@
+.App {
+  display: flex;
+}
+
+.grudge-list {
+  header {
+    @include center-items;
+    background: $color-main-dark;
+    flex-direction: column;
+    h1 {
+      font-size: 35px;
+      margin: 20px;
+      color: rgb(252, 153, 93);
+    }
+    section {
+      @include center-items;
+    }
+  }
+  .counts {
+    display: flex;
+    h2 {
+      margin: 20px;
+    }
+  }
+}
+
+.grudge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 640px) {
+  .grudge-list {
+    header {
+      padding: 20px;
+      section {
+        flex-direction: column;
+      }
+    }
+    .counts {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        margin: 5px;
+      }
+    }
+  }
+}

@@ -51,4 +51,121 @@ body {
   padding: 0;
   font-family: sans-serif; }
 
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw; }
+
+li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  width: 400px;
+  background: #D8D8D8;
+  border-radius: 10px; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  color: #707070;
+  padding: 5px 0px; }
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  color: #707070; }
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: #707070; }
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #707070; }
+
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #707070; }
+
+input, button {
+  background: #D8D8D8;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  margin: 5px; }
+
+button {
+  background-color: #5C5C5C;
+  border: 3px solid #777;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1em;
+  width: 100px;
+  text-align: center;
+  color: #EEE; }
+
+button:disabled {
+  color: #777; }
+
+button:focus, button:hover {
+  border: 3px solid #FFF;
+  border-radius: 10px;
+  outline: none;
+  background-color: #555;
+  box-shadow: 0px 0px 5px 1px #666; }
+
+button:focus {
+  background-color: #EEE;
+  border: 3px solid #555;
+  color: #555;
+  box-shadow: inset 0px 0px 5px 1px #666; }
+
+a {
+  text-decoration: none; }
+
+.App {
+  display: flex; }
+
+.grudge-list header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3d3d3d;
+  flex-direction: column; }
+  .grudge-list header h1 {
+    font-size: 35px;
+    margin: 20px;
+    color: #fc995d; }
+  .grudge-list header section {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+.grudge-list .counts {
+  display: flex; }
+  .grudge-list .counts h2 {
+    margin: 20px; }
+
+.grudge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+@media (max-width: 640px) {
+  .grudge-list header {
+    padding: 20px; }
+    .grudge-list header section {
+      flex-direction: column; }
+  .grudge-list .counts {
+    display: flex;
+    flex-direction: column; }
+    .grudge-list .counts h2 {
+      margin: 5px; } }
+
 /*# sourceMappingURL=index.css.map */
