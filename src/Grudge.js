@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class Grudge extends Component {
   render() {
@@ -10,7 +9,7 @@ class Grudge extends Component {
         <h2>NAME: {name}</h2>
         <h3>GRUDGE: {grudge}</h3>
         <h3>FORGIVEN: {forgiven ? 'Yes': 'No'}</h3>
-        <button onClick={() => console.log('forgive me?')}>Forgive</button>
+        <button onClick={() => this.props.forgivePerson(id)}>{forgiven ? 'All is forgiven 🙏🏽':'Forgive'}</button>
       </section>
     );
   }
