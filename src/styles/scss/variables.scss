@@ -40,12 +40,14 @@ li {
   width: 400px;
   background: $color-light;
   border-radius: 10px;
+  word-wrap: break-word;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-main;
   color: $color-main;
   padding: 5px 0px;
+  word-wrap: break-word;
 }
 
 h1 {

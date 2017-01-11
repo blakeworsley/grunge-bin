@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import Grudge from './Grudge';
 import axios from 'axios';
 
@@ -28,6 +27,22 @@ class GrudgeList extends Component {
       .catch(error => console.log(error));
   }
 
+  forgivePerson(selectedPerson){
+    const { grudgeList } = this.state;
+    const newList = grudgeList.map((person) => {
+      if(person.id === selectedPerson) {
+        return {  name: person.name,
+                  grudge: person.grudge,
+                  forgiven: true,
+                  id: person.id,
+                };
+      }
+      else { return person; }
+    });
+    this.countForgiven(newList);
+    this.setState({ grudgeList: newList });
+  }
+
   createNewGrudge(){
     const { name, grudge } = this.state;
     const id = Date.now();
@@ -43,15 +58,15 @@ class GrudgeList extends Component {
   }
 
   addGrudgesToPage() {
-    const { grudgeList, name, grudge } = this.state;
+    const { grudgeList } = this.state;
     return grudgeList.map((person, i) => {
-      let url = i;
-      if(person.name){
-        url = person.name.replace(' ', '').toLowerCase();
-      }
+      // let url = i;
+      // if(person.name){
+      //   url = person.name.replace(' ', '').toLowerCase();
+      // }
       return (
-        <li key={i}>
-          <Grudge person={person} />
+        <li key={i} className={person.forgiven ? 'forgiven' : ''}>
+          <Grudge person={person} forgivePerson={(selectedPerson) => this.forgivePerson(selectedPerson)} />
         </li>
       )
     })
@@ -100,11 +115,7 @@ class GrudgeList extends Component {
             <h2>Unforgivables: {unforgivenCount}</h2>
             <h2>Forgiven: {forgivenCount}</h2>
           </section>
-
         </header>
-
-
-
         <ul>{grudgeList.length ? this.addGrudgesToPage() : null}</ul>
       </section>
     );

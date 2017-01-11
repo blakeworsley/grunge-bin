@@ -18,12 +18,14 @@ li {
   margin: 10px;
   width: 400px;
   background: #D8D8D8;
-  border-radius: 10px; }
+  border-radius: 10px;
+  word-wrap: break-word; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
   color: #707070;
-  padding: 5px 0px; }
+  padding: 5px 0px;
+  word-wrap: break-word; }
 
 h1 {
   font-family: "Roboto", sans-serif;
