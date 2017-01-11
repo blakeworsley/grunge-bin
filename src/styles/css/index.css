@@ -51,8 +51,15 @@ body {
   padding: 0;
   font-family: sans-serif; }
 
-li {
+ul {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw; }
+
+li {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -125,10 +132,40 @@ a {
 .App {
   display: flex; }
 
+.grudge-list header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3d3d3d;
+  flex-direction: column; }
+  .grudge-list header h1 {
+    font-size: 35px;
+    margin: 20px;
+    color: #fc995d; }
+  .grudge-list header section {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+.grudge-list .counts {
+  display: flex; }
+  .grudge-list .counts h2 {
+    margin: 20px; }
+
 .grudge {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+
+@media (max-width: 640px) {
+  .grudge-list header {
+    padding: 20px; }
+    .grudge-list header section {
+      flex-direction: column; }
+  .grudge-list .counts {
+    display: flex;
+    flex-direction: column; }
+    .grudge-list .counts h2 {
+      margin: 5px; } }
 
 /*# sourceMappingURL=index.css.map */

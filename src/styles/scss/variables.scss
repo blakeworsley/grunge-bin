@@ -25,8 +25,14 @@ $font-main: 'Roboto', sans-serif;
 
 // HEADINGS
 
+ul {
+  @include center-items;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
 li {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 10px;

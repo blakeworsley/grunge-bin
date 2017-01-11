@@ -73,28 +73,38 @@ class GrudgeList extends Component {
     const { name, grudge, grudgeList, unforgivenCount, forgivenCount } = this.state;
     return (
       <section className="grudge-list">
-        <h2>Grudge List</h2>
-        <section>
-          <input
-            placeholder='Enter Name'
-            onChange={(e) => this.setState({ name: e.target.value})}
-            value={name}
-            >
-          </input>
-          <input
-            placeholder='Enter Grudge'
-            onChange={(e) => this.setState({ grudge: e.target.value})}
-            value={grudge}
-            >
-          </input>
-          <button onClick={() => this.createNewGrudge()}
-                  disabled={!(name && grudge)}>
-            Submit
-          </button>
-        </section>
-        <h2>Total People on my List: {grudgeList.length}</h2>
-        <h2>Unforgivables: {unforgivenCount}</h2>
-        <h2>Forgiven: {forgivenCount}</h2>
+        <header>
+          <section>
+            <h1>Grudge List</h1>
+            <section>
+              <input
+                placeholder='Enter Name'
+                onChange={(e) => this.setState({ name: e.target.value})}
+                value={name}
+                >
+              </input>
+              <input
+                placeholder='Enter Grudge'
+                onChange={(e) => this.setState({ grudge: e.target.value})}
+                value={grudge}
+                >
+              </input>
+              <button onClick={() => this.createNewGrudge()}
+                disabled={!(name && grudge)}>
+                Submit
+              </button>
+            </section>
+          </section>
+          <section className="counts">
+            <h2>Total People on my List: {grudgeList.length}</h2>
+            <h2>Unforgivables: {unforgivenCount}</h2>
+            <h2>Forgiven: {forgivenCount}</h2>
+          </section>
+
+        </header>
+
+
+
         <ul>{grudgeList.length ? this.addGrudgesToPage() : null}</ul>
       </section>
     );
