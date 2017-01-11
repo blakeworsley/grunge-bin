@@ -33,9 +33,22 @@ app.post('/grudge', (request, response) => {
   response.status(201).send({ data });
 });
 
-app.get('/urls/:shortenedUrl', (request, response) => {
-  let targetUrl = app.locals.urls.filter((url) =>
-    url.shortenedUrl===request.params.shortenedUrl)[0];
+// app.post('/grudge/:person', (request, response) => {
+//   const data = request.body;
+//   console.log(data);
+//   data.name = data.name;
+//   data.grudge = data.grudge;
+//   data.id = data.id || Date.now();
+//   // Object.assign(app.local.grudges, )
+//   app.locals.grudges.push(data);
+//   response.status(201).send({ data });
+// });
+
+
+app.get('/grudge/:person', (request, response) => {
+  let targetUrl = app.locals.grudges.filter((person) => {
+    person.name.replace(' ', '').toLowerCase() === request.params.person })[0];
+  console.log(targetUrl);
   if (!targetUrl) { response.send(`It's Broken.`);}
   ++targetUrl.clicks;
   response.redirect( targetUrl.url );

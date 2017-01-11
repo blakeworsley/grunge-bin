@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import Grudge from './Grudge';
 import axios from 'axios';
 
@@ -42,12 +43,15 @@ class GrudgeList extends Component {
   }
 
   addGrudgesToPage() {
-    const { grudgeList } = this.state;
+    const { grudgeList, name, grudge } = this.state;
     return grudgeList.map((person, i) => {
+      let url = i;
+      if(person.name){
+        url = person.name.replace(' ', '').toLowerCase();
+      }
       return (
         <li key={i}>
-          <Grudge name={person.name} grudge={person.grudge} forgiven={person.forgiven}
-            id={person.id} />
+          <Grudge person={person} />
         </li>
       )
     })
@@ -64,7 +68,6 @@ class GrudgeList extends Component {
       }
     }
   }
-
 
   render() {
     const { name, grudge, grudgeList, unforgivenCount, forgivenCount } = this.state;
@@ -84,14 +87,15 @@ class GrudgeList extends Component {
             value={grudge}
             >
           </input>
-          <button onClick={() => this.createNewGrudge()}>
+          <button onClick={() => this.createNewGrudge()}
+                  disabled={!(name && grudge)}>
             Submit
           </button>
         </section>
-        <section>Total People on my List: {grudgeList.length}</section>
-        <section>Unforgivables: {unforgivenCount}</section>
-        <section>Forgiven: {forgivenCount}</section>
-        <ul>{this.addGrudgesToPage()}</ul>
+        <h2>Total People on my List: {grudgeList.length}</h2>
+        <h2>Unforgivables: {unforgivenCount}</h2>
+        <h2>Forgiven: {forgivenCount}</h2>
+        <ul>{grudgeList.length ? this.addGrudgesToPage() : null}</ul>
       </section>
     );
   }
